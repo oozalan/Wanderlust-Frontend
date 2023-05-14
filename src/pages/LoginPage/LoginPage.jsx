@@ -104,7 +104,7 @@ export default class LoginPage extends React.Component {
     return (
       <div className="login-container">
         <form>
-          <h1 className="text-center mb-3">Log In</h1>
+          <h1 className="text-center mb-3">Login</h1>
           <div className="mb-3">
             <label
               htmlFor="username"

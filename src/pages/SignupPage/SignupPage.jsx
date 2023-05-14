@@ -147,7 +147,7 @@ export default class SignupPage extends React.Component {
     return (
       <div className="signup-container">
         <form>
-          <h1 className="text-center mb-3">Sign Up</h1>
+          <h1 className="text-center mb-3">Signup</h1>
           <div className="mb-3">
             <label
               htmlFor="name"
