@@ -1,0 +1,33 @@
+.my-friends-list {
+  width: 240px;
+  height: calc(100vh - 60px);
+  background-color: #d7cde73d;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  border-left: 1px solid #d7cde734;
+}
+
+.my-friends-list-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: none;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.my-friends-list-minimized {
+  width: 240px;
+  height: 72px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: #d7cde73d;
+  border: 1px solid #d7cde734;
+  border-right: none;
+  border-top-left-radius: 8px;
+}

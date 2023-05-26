@@ -1,13 +1,14 @@
+import { HashRouter, Route, Redirect, Switch } from "react-router-dom";
 import SignupPage from "./pages/SignupPage/SignupPage.jsx";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
-import NavBar from "./components/NavBar.jsx";
-import { HashRouter, Route, Redirect, Switch } from "react-router-dom";
+import UserPage from "./pages/UserPage/UserPage.jsx";
+import NavBar from "./components/NavBar/NavBar.jsx";
 
 export default function App() {
   return (
     <HashRouter>
-      <NavBar></NavBar>
+      <NavBar />
       <Switch>
         <Route
           exact
@@ -23,6 +24,11 @@ export default function App() {
           exact
           path="/signup"
           component={SignupPage}
+        />
+        <Route
+          exact
+          path="/user/:username"
+          component={UserPage}
         />
         <Redirect to="/" />
       </Switch>

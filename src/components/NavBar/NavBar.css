@@ -1,0 +1,33 @@
+.my-navbar {
+  color: rgb(240, 240, 240);
+  background-color: rgb(136, 95, 201);
+  display: flex;
+  padding: 0.75rem 1rem;
+  height: 60px;
+}
+
+.my-navbar-link {
+  color: inherit;
+  text-decoration: none;
+  transition: 0.15s color;
+  margin: 0 0.5rem;
+  font-weight: 500;
+}
+
+.my-navbar-link:hover {
+  color: white;
+}
+
+.my-navbar-title {
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+.my-navbar-list {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  align-items: center;
+  margin: 0;
+}

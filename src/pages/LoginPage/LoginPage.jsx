@@ -1,162 +1,143 @@
-import React from "react";
-import { login } from "../../api/apiCalls.js";
 import "./LoginPage.css";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getLoginAction } from "../../redux/actions";
+import { login } from "../../api/apiCalls.js";
 
-export default class LoginPage extends React.Component {
-  state = {
-    username: "",
-    password: "",
-    isPending: false,
-    usernameErrMsg: "",
-    passwordErrMsg: "",
-  };
+export default function LoginPage(props) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isPending, setIsPending] = useState(false);
+  const [usernameErrMsg, setUsernameErrMsg] = useState("");
+  const [passwordErrMsg, setPasswordErrMsg] = useState("");
+  const dispatch = useDispatch();
 
-  onChange = (event) => {
+  const isDisabled = Boolean(isPending || usernameErrMsg || passwordErrMsg);
+
+  return (
+    <div className="my-login-container">
+      <form className="my-login">
+        <h1 className="my-login-header">Login</h1>
+        <div className="my-login-input">
+          <label
+            htmlFor="username"
+            className="form-label"
+          >
+            Username
+          </label>
+          <input
+            type="text"
+            id="username"
+            className={
+              usernameErrMsg ? "form-control is-invalid" : "form-control"
+            }
+            onChange={onChange}
+          />
+          <div className="invalid-feedback">{usernameErrMsg}</div>
+        </div>
+        <div className="my-login-input">
+          <label
+            htmlFor="password"
+            className="form-label"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            className={
+              passwordErrMsg ? "form-control is-invalid" : "form-control"
+            }
+            onChange={onChange}
+          />
+          <div className="invalid-feedback">{passwordErrMsg}</div>
+        </div>
+        <div className="my-login-btn-container">
+          <button
+            className="btn btn-primary"
+            onClick={onClickLogin}
+            disabled={isDisabled}
+          >
+            {isPending && (
+              <span className="spinner-border spinner-border-sm"></span>
+            )}
+            <span> Log In</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+
+  function onChange(event) {
     let field = event.target.id;
     let value = event.target.value;
-    this.setState({
-      [field]: value,
-    });
 
-    this.validate(field, value);
-  };
+    if (field == "username") setUsername(value);
+    else setPassword(value);
 
-  onClick = async (event) => {
+    validate(field, value);
+  }
+
+  async function onClickLogin(event) {
     event.preventDefault();
 
-    const credentials = {
-      username: this.state.username,
-      password: this.state.password,
-    };
-
-    const isUsernameInValid = !this.validate("username", credentials.username);
-    const isPasswordInValid = !this.validate("password", credentials.password);
+    const isUsernameInValid = !validate("username", username);
+    const isPasswordInValid = !validate("password", password);
 
     if (isUsernameInValid || isPasswordInValid) return;
 
-    this.setState({
-      isPending: true,
-    });
+    setIsPending(true);
+
+    const credentials = {
+      username,
+      password,
+    };
 
     try {
-      await login(credentials);
+      // const response = await login(credentials);
+      // const userInfo = response.data;
+
+      const userInfo = {
+        ...credentials,
+        name: "Onat",
+        surname: "Özalan",
+        email: "o171141@gmail.com",
+        image: null,
+      };
+
+      dispatch(getLoginAction(userInfo));
+      props.history.push("/");
     } catch (error) {
-      console.log("Bad login POST request");
+      console.log("Invalid login");
     } finally {
-      this.setState({
-        isPending: false,
-      });
+      setIsPending(false);
     }
-  };
-
-  validate(field, value) {
-    if (value.length == 0) {
-      let errMsg = `${field} cannot be empty.`;
-      errMsg = errMsg[0].toUpperCase() + errMsg.slice(1);
-      this.setState({
-        [field + "ErrMsg"]: errMsg,
-      });
-      return false;
-    }
-
-    if (field == "username") {
-      if (value.length < 3 || value.length > 12) {
-        let errMsg = `${field} must be at least 3 and at most 12 characters long.`;
-        errMsg = errMsg[0].toUpperCase() + errMsg.slice(1);
-        this.setState({
-          [field + "ErrMsg"]: errMsg,
-        });
-        return false;
-      }
-
-      if (!/^[a-z0-9]+$/i.test(value)) {
-        let errMsg = `${field} must contain only letters and digits.`;
-        errMsg = errMsg[0].toUpperCase() + errMsg.slice(1);
-        this.setState({
-          [field + "ErrMsg"]: errMsg,
-        });
-        return false;
-      }
-    } else {
-      if (value.length < 8 || value.length > 12) {
-        let errMsg = `${field} must be at least 8 and at most 12 characters long.`;
-        errMsg = errMsg[0].toUpperCase() + errMsg.slice(1);
-        this.setState({
-          [field + "ErrMsg"]: errMsg,
-        });
-        return false;
-      }
-    }
-
-    this.setState({
-      [field + "ErrMsg"]: "",
-    });
-    return true;
   }
 
-  render() {
-    let isDisabled = Boolean(
-      this.state.isPending ||
-        this.state.usernameErrMsg ||
-        this.state.passwordErrMsg
-    );
+  function validate(field, value) {
+    let errMsg = "";
 
-    return (
-      <div className="login-container">
-        <form>
-          <h1 className="text-center mb-3">Login</h1>
-          <div className="mb-3">
-            <label
-              htmlFor="username"
-              className="form-label"
-            >
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              className={
-                this.state.usernameErrMsg
-                  ? "form-control is-invalid"
-                  : "form-control"
-              }
-              onChange={this.onChange}
-            />
-            <div className="invalid-feedback">{this.state.usernameErrMsg}</div>
-          </div>
-          <div className="mb-3">
-            <label
-              htmlFor="password"
-              className="form-label"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className={
-                this.state.passwordErrMsg
-                  ? "form-control is-invalid"
-                  : "form-control"
-              }
-              onChange={this.onChange}
-            />
-            <div className="invalid-feedback">{this.state.passwordErrMsg}</div>
-          </div>
-          <div className="mt-4 text-center">
-            <button
-              className="btn btn-primary"
-              onClick={this.onClick}
-              disabled={isDisabled}
-            >
-              {this.state.isPending && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              <span> Log In</span>
-            </button>
-          </div>
-        </form>
-      </div>
-    );
+    if (value.length == 0) errMsg = `${field} cannot be empty.`;
+    else if (field == "username") {
+      if (value.length < 3 || value.length > 12)
+        errMsg = `${field} must be at least 3 and at most 12 characters long.`;
+      else if (!/^[a-z0-9]+$/i.test(value))
+        errMsg = `${field} must contain only letters and digits.`;
+    } else if (value.length < 8 || value.length > 12)
+      errMsg = `${field} must be at least 8 and at most 12 characters long.`;
+
+    if (errMsg) {
+      errMsg = errMsg[0].toUpperCase() + errMsg.slice(1);
+
+      if (field == "username") setUsernameErrMsg(errMsg);
+      else setPasswordErrMsg(errMsg);
+
+      return false;
+    } else {
+      if (field == "username" && usernameErrMsg) setUsernameErrMsg(errMsg);
+      else if (field == "password" && passwordErrMsg) setPasswordErrMsg(errMsg);
+
+      return true;
+    }
   }
 }

@@ -1,0 +1,11 @@
+.my-friend-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+}
+
+.my-friend {
+  padding: 0.5rem;
+  border-bottom: 1px solid #d7cde734;
+}

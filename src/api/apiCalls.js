@@ -13,3 +13,7 @@ export function login(credentials) {
     }
   );
 }
+
+export function getFriends(username) {
+  return axios.get(`${username}/friends`);
+}
