@@ -39,12 +39,15 @@ export default function NavBar() {
             {username}
           </Link>
         </li>
-        <li
-          className="my-navbar-link"
-          onClick={onClickLogout}
-          style={{ cursor: "pointer" }}
-        >
-          Logout
+        <li>
+          <Link
+            to="/"
+            className="my-navbar-link"
+            onClick={onClickLogout}
+            style={{ cursor: "pointer" }}
+          >
+            Logout
+          </Link>
         </li>
       </ul>
     );

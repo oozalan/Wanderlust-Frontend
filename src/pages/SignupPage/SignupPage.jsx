@@ -117,6 +117,7 @@ export default function SignupPage(props) {
             className="btn btn-primary"
             onClick={onClickSignup}
             disabled={isDisabled}
+            style={{ fontWeight: 500 }}
           >
             {isPending && (
               <span className="spinner-border spinner-border-sm"></span>
@@ -182,17 +183,18 @@ export default function SignupPage(props) {
     };
 
     try {
-      // await signup(body);
+      // TODO: Get user id and token and store them in redux store
+      const response = await signup(body);
 
       const userInfo = {
         ...body,
-        image: null,
+        image: undefined,
       };
 
       dispatch(getSignupAction(userInfo));
       props.history.push("/");
     } catch (error) {
-      console.log("Invalid signup");
+      // TODO: Display errors coming from backend
     } finally {
       setIsPending(false);
     }

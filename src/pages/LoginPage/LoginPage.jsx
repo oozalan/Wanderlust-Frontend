@@ -57,6 +57,7 @@ export default function LoginPage(props) {
             className="btn btn-primary"
             onClick={onClickLogin}
             disabled={isDisabled}
+            style={{ fontWeight: 500 }}
           >
             {isPending && (
               <span className="spinner-border spinner-border-sm"></span>
@@ -94,6 +95,7 @@ export default function LoginPage(props) {
     };
 
     try {
+      // TODO: Get all user information (including id and token), store them in redux store
       // const response = await login(credentials);
       // const userInfo = response.data;
 
@@ -103,12 +105,14 @@ export default function LoginPage(props) {
         surname: "Özalan",
         email: "o171141@gmail.com",
         image: null,
+        id: 1,
+        token: "adasdadsda",
       };
 
       dispatch(getLoginAction(userInfo));
       props.history.push("/");
     } catch (error) {
-      console.log("Invalid login");
+      // TODO: Display errors coming from backend
     } finally {
       setIsPending(false);
     }

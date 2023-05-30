@@ -1,0 +1,41 @@
+.my-post-creator {
+  width: 500px;
+  background-color: hwb(261 92% 0%);
+  border: 1px solid hwb(261 92% 15%);
+  border-radius: 6px;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.my-post-creator-content {
+  resize: none;
+  margin-bottom: 0.75rem;
+}
+
+.my-post-creator-tag {
+  margin-left: 0.4rem;
+  display: inline-block;
+  width: auto;
+  margin-right: 1rem;
+}
+
+.my-post-creator-image-wrapper {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.my-post-creator-minimized {
+  width: 500px;
+  margin-top: 1rem;
+  resize: none;
+  cursor: pointer;
+}
+
+.my-post-creator-input-wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}

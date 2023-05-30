@@ -4,13 +4,19 @@ const reducer = (state, action) => {
 
     for (let key in newState) newState[key] = undefined;
     newState.isLoggedIn = false;
+    newState.searchResults = [];
 
     return newState;
   } else if (action.type == "login" || action.type == "signup") {
     return {
       ...action.payload,
       isLoggedIn: true,
+      searchResults: [],
     };
+  } else if (action.type == "search") {
+    let newState = { ...state };
+    newState.searchResults = action.payload;
+    return newState;
   }
 
   return state;

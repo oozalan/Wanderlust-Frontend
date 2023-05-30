@@ -1,0 +1,87 @@
+.my-post {
+  width: 500px;
+  background-color: hwb(261 92% 0%);
+  border: 1px solid hwb(261 92% 15%);
+  border-bottom: none;
+  border-radius: 6px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.my-post-inner-wrapper {
+  padding: 0.5rem 0.75rem 0.75rem 0.75rem;
+  border-bottom: 1px solid hwb(261 92% 15%);
+}
+
+.my-post-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+}
+
+.my-post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.my-post-date {
+  flex-grow: 1;
+  text-align: end;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.my-post-info {
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.my-post-category {
+  margin-right: 1rem;
+}
+
+.my-post-like {
+  margin-right: 0.5rem;
+}
+
+.my-post-picture {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  height: auto;
+}
+
+.my-post-tag {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.4);
+  margin: 0 0 0.25rem 0;
+}
+
+.my-post-content {
+  margin: 0 0 0.25rem 0;
+}
+
+.my-post-comments-container {
+  height: 160px;
+  overflow-y: auto;
+}
+
+.add-comment-wrapper {
+  padding: 1rem;
+  border-top: 1px solid hwb(261 92% 15%);
+}
+
+.add-comment-minimized {
+  resize: none;
+  cursor: pointer;
+}
+
+.my-post-comments-container .my-comment-container:first-of-type {
+  border-top: none;
+}
+
+.add-comment {
+  resize: none;
+}

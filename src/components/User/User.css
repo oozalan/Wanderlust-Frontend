@@ -1,0 +1,12 @@
+.my-user-image {
+  width: 40px;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+}
+
+.my-user {
+  padding: 0.5rem 1rem;
+  background-color: hwb(261 92% 0%);
+  border: 1px solid hwb(261 92% 15%);
+  border-radius: 6px;
+}

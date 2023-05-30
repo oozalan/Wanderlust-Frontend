@@ -17,3 +17,10 @@ export const getSignupAction = (userInfo) => {
     payload: userInfo,
   };
 };
+
+export const getSearchAction = (searchResults) => {
+  return {
+    type: "search",
+    payload: searchResults,
+  };
+};

@@ -1,9 +1,10 @@
 import "./HomePage.css";
-import travelPhoto from "../../images/travel.jpg";
 import { useSelector } from "react-redux";
 import FriendsList from "../../components/FriendsList/FriendsList.jsx";
+import Search from "../../components/Search/Search.jsx";
+import PostContainer from "../../components/PostContainer/PostContainer.jsx";
 
-export default function HomePage() {
+export default function HomePage(props) {
   const { isLoggedIn } = useSelector((store) => store);
 
   let homePage = (
@@ -16,7 +17,13 @@ export default function HomePage() {
   );
 
   if (isLoggedIn) {
-    homePage = <FriendsList />;
+    homePage = (
+      <>
+        <Search push={props.history.push} />
+        <PostContainer />
+        <FriendsList />
+      </>
+    );
   }
 
   return <>{homePage}</>;

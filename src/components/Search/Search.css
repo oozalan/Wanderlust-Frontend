@@ -1,30 +1,36 @@
-.my-friends-list {
+.my-search {
   width: 240px;
   height: calc(100vh - 60px);
   background-color: hwb(261 92% 0%);
   position: fixed;
-  right: 0;
+  left: 0;
   top: 60px;
+  padding: 1rem;
   z-index: 1;
-  border-left: 1px solid hwb(261 92% 15%);
+  border-right: 1px solid hwb(261 92% 15%);
 }
 
-.my-friends-list-btn {
+.my-search-btn {
   width: 40px;
   height: 40px;
   border-radius: 100%;
   position: absolute;
   bottom: 16px;
-  right: 16px;
+  left: 16px;
   z-index: 2;
 }
 
-.my-friends-list-btn-minimized {
+.my-search-text {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.my-search-btn-minimized {
   width: 40px;
   height: 40px;
   border-radius: 100%;
   position: fixed;
   bottom: 16px;
-  right: 16px;
+  left: 16px;
   z-index: 2;
 }

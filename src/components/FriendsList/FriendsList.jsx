@@ -1,87 +1,67 @@
 import "./FriendsList.css";
-import React from "react";
-import { connect } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Friend from "../Friend/Friend.jsx";
-import ali from "../../images/ali.jpg";
-import oya from "../../images/oya.jpg";
+import blankPhoto from "../../images/blank.webp";
+import { getFriends } from "../../api/apiCalls";
 
-class FriendsList extends React.Component {
-  state = {
-    friends: [],
-    isMinimized: false,
-  };
+export default function FriendsList() {
+  const [friends, setFriends] = useState([]);
+  const [isMinimized, setIsMinimized] = useState(true);
+  const { id } = useSelector((store) => store);
 
-  onClickBtn = () => {
-    this.setState({
-      isMinimized: !this.state.isMinimized,
-    });
-  };
+  const onClickBtn = () => setIsMinimized(!isMinimized);
 
-  async componentDidMount() {
-    // const response = await getFriends(this.props.username);
-    // this.setState({
-    //   friends: response.data,
-    // });
+  useEffect(() => {
+    // TODO: Connection with backend
+    // const response = await getFriends({id});
+    // setFriends(response.data);
 
     let friends = [];
     friends[0] = {
       username: "ooya",
       name: "Oya",
       surname: "Başaran",
-      image: oya,
+      image: blankPhoto,
     };
 
     friends[1] = {
       username: "aali",
       name: "Ali",
       surname: "Altan",
-      image: ali,
+      image: blankPhoto,
     };
 
-    this.setState({
-      friends,
-    });
-  }
+    setFriends(friends);
+  }, []);
 
-  render() {
-    let friendsList = (
-      <div className="my-friends-list">
-        {this.state.friends.map((friend) => (
-          <Friend
-            key={friend.username}
-            info={friend}
-          />
-        ))}
-        <button
-          className="my-friends-list-btn"
-          onClick={this.onClickBtn}
-        >
-          <i className="fa-solid fa-angle-down"></i>
-        </button>
-      </div>
+  let friendsList = (
+    <div className="my-friends-list">
+      {friends.map((friend) => (
+        <Friend
+          key={friend.username}
+          info={friend}
+        />
+      ))}
+      <button
+        className="btn btn-primary my-friends-list-btn"
+        onClick={onClickBtn}
+      >
+        <i className="fa-solid fa-angle-down"></i>
+      </button>
+    </div>
+  );
+
+  if (isMinimized) {
+    friendsList = (
+      <button
+        className="btn btn-primary my-friends-list-btn-minimized"
+        onClick={onClickBtn}
+      >
+        <i className="fa-solid fa-angle-up"></i>
+      </button>
     );
-
-    if (this.state.isMinimized) {
-      friendsList = (
-        <div className="my-friends-list-minimized">
-          <button
-            className="my-friends-list-btn"
-            onClick={this.onClickBtn}
-          >
-            <i className="fa-solid fa-angle-up"></i>
-          </button>
-        </div>
-      );
-    }
-
-    return <>{friendsList}</>;
   }
-}
 
-function mapStateToProps(store) {
-  return {
-    username: store.username,
-  };
+  return <>{friendsList}</>;
 }
-
-export default connect(mapStateToProps)(FriendsList);

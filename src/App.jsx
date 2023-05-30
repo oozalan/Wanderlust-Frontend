@@ -3,6 +3,7 @@ import SignupPage from "./pages/SignupPage/SignupPage.jsx";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import UserPage from "./pages/UserPage/UserPage.jsx";
+import SearchPage from "./pages/SearchPage/SearchPage.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 
 export default function App() {
@@ -29,6 +30,11 @@ export default function App() {
           exact
           path="/user/:username"
           component={UserPage}
+        />
+        <Route
+          exact
+          path="/search"
+          component={SearchPage}
         />
         <Redirect to="/" />
       </Switch>

@@ -1,0 +1,8 @@
+.my-post-container {
+  min-height: calc(100vh - 60px);
+  background-color: hwb(263 80% 9% / 0.24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
+}

@@ -1,0 +1,30 @@
+.my-comment-container {
+  width: 100%;
+  background-color: hwb(261 92% 0%);
+  padding: 0.5rem 0.75rem 0.75rem 0.75rem;
+  border-radius: 1px solid black;
+  border-top: 1px solid hwb(261 92% 15%);
+}
+
+.my-comment-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+}
+
+.my-comment-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.my-comment-date {
+  flex-grow: 1;
+  text-align: end;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.my-comment-content {
+  margin: 0;
+}

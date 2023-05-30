@@ -3,6 +3,8 @@ import reducer from "./reducer";
 
 const configureStoreObj = () => {
   return createStore(reducer, {
+    id: undefined,
+    token: undefined,
     name: undefined,
     surname: undefined,
     username: undefined,
@@ -10,6 +12,7 @@ const configureStoreObj = () => {
     password: undefined,
     image: undefined,
     isLoggedIn: false,
+    searchResults: [],
   });
 };
 
