@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { getFriendsPosts } from "../../api/apiCalls.js";
 import CreatePost from "../CreatePost/CreatePost";
 
-export default function PostContainer() {
+export default function PostContainer(props) {
   const [posts, setPosts] = useState([]);
   const { id } = useSelector((store) => store);
 
@@ -19,6 +19,7 @@ export default function PostContainer() {
 
     const post = {
       id: 10,
+      userId: 50530,
       username: "ooya",
       name: "Oya",
       surname: "Başaran",
@@ -34,6 +35,7 @@ export default function PostContainer() {
 
     const comment1 = {
       id: 700,
+      userId: 163242,
       name: "Ali",
       surname: "Candan",
       username: "aali",
@@ -44,6 +46,7 @@ export default function PostContainer() {
 
     const comment2 = {
       id: 800,
+      userId: 75621,
       name: "Aliye",
       surname: "Camcı",
       username: "aaliye",
@@ -56,6 +59,7 @@ export default function PostContainer() {
 
     const post1 = {
       id: 20,
+      userId: 232323,
       username: "ooya",
       name: "Oya",
       surname: "Başaran",
@@ -71,6 +75,7 @@ export default function PostContainer() {
 
     const comment3 = {
       id: 400,
+      userId: 2111212,
       name: "Ali",
       surname: "Candan",
       username: "aali",
@@ -81,6 +86,7 @@ export default function PostContainer() {
 
     const comment4 = {
       id: 500,
+      userId: 23424342,
       name: "Aliye",
       surname: "Camcı",
       username: "aaliye",
@@ -100,6 +106,7 @@ export default function PostContainer() {
         <Post
           key={mypost.id}
           info={mypost}
+          push={props.push}
         />
       ))}
     </div>

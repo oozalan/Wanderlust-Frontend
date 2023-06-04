@@ -28,3 +28,15 @@ export function addCommentApi(commentInfo) {
 export function performSearch(searchInfo) {
   return axios.post(`${path}/api/search`, searchInfo);
 }
+
+export function getUserInfo(userId) {
+  return axios.post(`${path}/api/getuserinfo`, { userId });
+}
+
+export function addFriend(info) {
+  return axios.post(`${path}/api/addfriend`, info);
+}
+
+export function removeFriend(info) {
+  return axios.post(`${path}/api/removefriend`, info);
+}

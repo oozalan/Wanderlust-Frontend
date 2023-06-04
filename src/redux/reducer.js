@@ -17,6 +17,10 @@ const reducer = (state, action) => {
     let newState = { ...state };
     newState.searchResults = action.payload;
     return newState;
+  } else if (action.type == "userpage") {
+    let newState = { ...state };
+    newState.displayedUserId = action.payload;
+    return newState;
   }
 
   return state;

@@ -2,8 +2,9 @@ import "./Post.css";
 import { useState } from "react";
 import Comment from "../Comment/Comment.jsx";
 import { Carousel } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCommentApi } from "../../api/apiCalls";
+import { getUserPageAction } from "../../redux/actions";
 
 export default function Post(props) {
   const [isCommentsVisible, setIsCommentsVisible] = useState(false);
@@ -11,13 +12,20 @@ export default function Post(props) {
   const [commentContent, setCommentContent] = useState("");
   const { id: userId } = useSelector((store) => store);
   const { info } = props;
+  const dispatch = useDispatch();
 
   const comments = info.comments.map((comment) => (
     <Comment
       key={comment.id}
       info={comment}
+      push={props.push}
     />
   ));
+
+  const onClickPoster = () => {
+    dispatch(getUserPageAction(info.userId));
+    props.push(`/user/${info.username}`);
+  };
 
   const onClickComment = () => {
     if (isCommentsVisible) {
@@ -129,13 +137,18 @@ export default function Post(props) {
     <div className="my-post">
       <div className="my-post-inner-wrapper">
         <div className="my-post-header">
-          <img
-            className="my-post-image"
-            src={info.image}
-          />
-          <span>
-            {info.name} {info.surname}
-          </span>
+          <div
+            onClick={onClickPoster}
+            style={{ cursor: "pointer" }}
+          >
+            <img
+              className="my-post-image"
+              src={info.image}
+            />
+            <span>
+              {info.name} {info.surname}
+            </span>
+          </div>
           <span className="my-post-date">{info.date}</span>
         </div>
         <div className="my-post-info">

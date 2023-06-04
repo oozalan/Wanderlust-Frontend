@@ -1,11 +1,15 @@
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getLogoutAction } from "../../redux/actions";
+import { getLogoutAction, getUserPageAction } from "../../redux/actions";
 
 export default function NavBar() {
-  const { isLoggedIn, username } = useSelector((store) => store);
+  const { isLoggedIn, username, id } = useSelector((store) => store);
   const dispatch = useDispatch();
+
+  const onClickUsername = () => {
+    dispatch(getUserPageAction(id));
+  };
 
   let links = (
     <ul className="my-navbar-list">
@@ -35,6 +39,7 @@ export default function NavBar() {
           <Link
             className="my-navbar-link"
             to={`/user/${username}`}
+            onClick={onClickUsername}
           >
             {username}
           </Link>

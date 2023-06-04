@@ -1,9 +1,21 @@
+import { getUserPageAction } from "../../redux/actions";
 import "./Friend.css";
+import { useDispatch } from "react-redux";
 
 export default function Friend(props) {
-  const { name, surname, image } = props.info;
+  const { name, surname, username, image, id } = props.info;
+  const dispatch = useDispatch();
+
+  const onClickFriend = () => {
+    dispatch(getUserPageAction(id));
+    props.push(`/user/${username}`);
+  };
+
   return (
-    <div className="my-friend">
+    <div
+      className="my-friend"
+      onClick={onClickFriend}
+    >
       <img
         className="my-friend-photo"
         src={image}

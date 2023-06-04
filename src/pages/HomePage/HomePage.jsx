@@ -20,8 +20,8 @@ export default function HomePage(props) {
     homePage = (
       <>
         <Search push={props.history.push} />
-        <PostContainer />
-        <FriendsList />
+        <PostContainer push={props.history.push} />
+        <FriendsList push={props.history.push} />
       </>
     );
   }

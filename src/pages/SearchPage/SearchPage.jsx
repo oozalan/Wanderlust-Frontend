@@ -3,7 +3,7 @@ import User from "../../components/User/User";
 import "./SearchPage.css";
 import Post from "../../components/Post/Post";
 
-export default function SearchPage() {
+export default function SearchPage(props) {
   const { searchResults } = useSelector((store) => store);
 
   let results;
@@ -13,6 +13,7 @@ export default function SearchPage() {
       <User
         key={user.id}
         userInfo={user}
+        push={props.history.push}
       />
     ));
   } else {
@@ -20,6 +21,7 @@ export default function SearchPage() {
       <Post
         key={post.id}
         info={post}
+        push={props.history.push}
       />
     ));
   }

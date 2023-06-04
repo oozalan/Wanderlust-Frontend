@@ -7,4 +7,10 @@
 
 .my-friend {
   padding: 0.5rem;
+  cursor: pointer;
+  transition: 0.15s background-color;
+}
+
+.my-friend:hover {
+  background-color: hwb(261 80% 0%);
 }

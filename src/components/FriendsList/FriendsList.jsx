@@ -5,7 +5,7 @@ import Friend from "../Friend/Friend.jsx";
 import blankPhoto from "../../images/blank.webp";
 import { getFriends } from "../../api/apiCalls";
 
-export default function FriendsList() {
+export default function FriendsList(props) {
   const [friends, setFriends] = useState([]);
   const [isMinimized, setIsMinimized] = useState(true);
   const { id } = useSelector((store) => store);
@@ -19,6 +19,7 @@ export default function FriendsList() {
 
     let friends = [];
     friends[0] = {
+      id: 1800,
       username: "ooya",
       name: "Oya",
       surname: "Başaran",
@@ -26,6 +27,7 @@ export default function FriendsList() {
     };
 
     friends[1] = {
+      id: 1600,
       username: "aali",
       name: "Ali",
       surname: "Altan",
@@ -41,6 +43,7 @@ export default function FriendsList() {
         <Friend
           key={friend.username}
           info={friend}
+          push={props.push}
         />
       ))}
       <button

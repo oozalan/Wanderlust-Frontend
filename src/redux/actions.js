@@ -24,3 +24,10 @@ export const getSearchAction = (searchResults) => {
     payload: searchResults,
   };
 };
+
+export const getUserPageAction = (id) => {
+  return {
+    type: "userpage",
+    payload: id,
+  };
+};

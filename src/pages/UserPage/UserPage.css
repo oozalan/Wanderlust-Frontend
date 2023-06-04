@@ -1,0 +1,42 @@
+.my-userpage {
+  min-height: calc(100vh - 60px);
+  background-color: #d7cde73d;
+  display: flex;
+}
+
+.my-userpage-user {
+  border-right: 1px solid hwb(261 92% 10%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.my-userpage-profile-photo {
+  width: 200px;
+  border-radius: 16px;
+  margin-bottom: 0.25rem;
+}
+
+.my-userpage-username {
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.my-userpage-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my-userpage-control {
+  padding: 1rem;
+  text-align: center;
+}
+
+.my-userpage-control .my-user {
+  width: 500px;
+  margin-top: 1rem;
+  text-align: start;
+}

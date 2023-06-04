@@ -35,96 +35,101 @@ export default function Search(props) {
     // response.data.searchType = searchOption;
     // dispatch(getSearchAction(response.data));
 
-    // const user1 = {
-    //   id: 1532,
-    //   image: blankPhoto,
+    const user1 = {
+      id: 1532,
+      image: blankPhoto,
+      name: "Oya",
+      surname: "Başaran",
+      username: "searchresult1",
+    };
+
+    const user2 = {
+      id: 1422,
+      image: blankPhoto,
+      name: "Ali",
+      surname: "Altan",
+      username: "searchresult2",
+    };
+
+    let searchResults = [user1, user2];
+    searchResults.searchType = "user";
+
+    // const post = {
+    //   id: 10,
+    //   username: "ooya",
     //   name: "Oya",
     //   surname: "Başaran",
-    // };
-
-    // const user2 = {
-    //   id: 1422,
+    //   date: "16/04/2027 17:43",
+    //   category: "Museum",
+    //   tags: "#balon #tatil",
+    //   location: "Istanbul",
+    //   content: "It is the best museum I've ever seen.",
     //   image: blankPhoto,
-    //   name: "Ali",
-    //   surname: "Altan",
+    //   postImages: [museum1, museum2, museum3],
+    //   comments: [],
     // };
 
-    // let searchResults = [user1, user2];
-    // searchResults.searchType = "user";
-    const post = {
-      id: 10,
-      username: "ooya",
-      name: "Oya",
-      surname: "Başaran",
-      date: "16/04/2027 17:43",
-      category: "Museum",
-      tags: "#balon #tatil",
-      location: "Istanbul",
-      content: "It is the best museum I've ever seen.",
-      image: blankPhoto,
-      postImages: [museum1, museum2, museum3],
-      comments: [],
-    };
+    // const comment1 = {
+    //   id: 700,
+    //   name: "Ali",
+    //   surname: "Candan",
+    //   username: "aali",
+    //   date: "16/04/2027 17:49",
+    //   content: "I agree with you.",
+    //   image: blankPhoto,
+    // };
 
-    const comment1 = {
-      id: 700,
-      name: "Ali",
-      surname: "Candan",
-      username: "aali",
-      date: "16/04/2027 17:49",
-      content: "I agree with you.",
-      image: blankPhoto,
-    };
+    // const comment2 = {
+    //   id: 800,
+    //   name: "Aliye",
+    //   surname: "Camcı",
+    //   username: "aaliye",
+    //   date: "16/04/2027 17:56",
+    //   content: "It's not that great.",
+    //   image: blankPhoto,
+    // };
 
-    const comment2 = {
-      id: 800,
-      name: "Aliye",
-      surname: "Camcı",
-      username: "aaliye",
-      date: "16/04/2027 17:56",
-      content: "It's not that great.",
-      image: blankPhoto,
-    };
+    // post.comments.push(comment1, comment2);
 
-    post.comments.push(comment1, comment2);
+    // const post1 = {
+    //   id: 20,
+    //   username: "ooya",
+    //   name: "Oya",
+    //   surname: "Başaran",
+    //   date: "16/04/2027 17:44",
+    //   category: "Museum",
+    //   tags: "#balon #tatil",
+    //   location: "Istanbul",
+    //   content: "It is the best museum I've ever seen.",
+    //   image: blankPhoto,
+    //   postImages: [museum1, museum2, museum3],
+    //   comments: [],
+    // };
 
-    const post1 = {
-      id: 20,
-      username: "ooya",
-      name: "Oya",
-      surname: "Başaran",
-      date: "16/04/2027 17:44",
-      category: "Museum",
-      tags: "#balon #tatil",
-      location: "Istanbul",
-      content: "It is the best museum I've ever seen.",
-      image: blankPhoto,
-      postImages: [museum1, museum2, museum3],
-      comments: [],
-    };
+    // const comment3 = {
+    //   id: 400,
+    //   name: "Ali",
+    //   surname: "Candan",
+    //   username: "aali",
+    //   date: "16/04/2027 17:49",
+    //   content: "I agree with you.",
+    //   image: blankPhoto,
+    // };
 
-    const comment3 = {
-      id: 400,
-      name: "Ali",
-      surname: "Candan",
-      username: "aali",
-      date: "16/04/2027 17:49",
-      content: "I agree with you.",
-      image: blankPhoto,
-    };
+    // const comment4 = {
+    //   id: 500,
+    //   name: "Aliye",
+    //   surname: "Camcı",
+    //   username: "aaliye",
+    //   date: "16/04/2027 17:56",
+    //   content: "It's not that great.",
+    //   image: blankPhoto,
+    // };
 
-    const comment4 = {
-      id: 500,
-      name: "Aliye",
-      surname: "Camcı",
-      username: "aaliye",
-      date: "16/04/2027 17:56",
-      content: "It's not that great.",
-      image: blankPhoto,
-    };
-
-    post1.comments.push(comment3, comment4);
-    dispatch(getSearchAction([post, post1]));
+    // post1.comments.push(comment3, comment4);
+    // let searchResults = [post, post1];
+    // searchResults.searchType = "post";
+    dispatch(getSearchAction(searchResults));
     props.push("/search");
   };
 
